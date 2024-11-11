@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 3;
+        speed = 4;
         count = 0;
         SetCountText();
         winTextObject.SetActive(false);
@@ -58,6 +59,11 @@ public class PlayerController : MonoBehaviour
             count = count + 1;
             SetCountText();
         }
-        
+
+        if (other.gameObject.CompareTag("Hazard"))
+        {
+            SceneManager.LoadScene("MiniGame");
+        }
+
     }
 }
